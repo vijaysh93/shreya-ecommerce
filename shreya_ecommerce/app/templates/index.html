@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shreya Enterprises</title>
+</head>
+<body>
+    <h1>Shreya Enterprises</h1>
+    <p>Ramanagara, Mysore Bengaluru Main Road, near Kanakapura Circle</p>
+    <h2>Products</h2>
+    <ul>
+    {% for product in products %}
+        <li>{{ product[1] }} - ₹{{ product[2] }}
+            <form action="{{ url_for('order') }}" method="post">
+                <input type="hidden" name="product_id" value="{{ product[0] }}">
+                <input type="number" name="quantity" value="1" min="1">
+                <input type="submit" value="Order">
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
